@@ -1,0 +1,16 @@
+# webhook_rulebook.yml
+- name: Webhook Event Rulebook
+  hosts: localhost
+
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+        endpoint: /webhook
+
+  rules:
+    - name: Trigger playbook on high-severity alert
+      condition: event.severity == 'high' and event.event == 'ALERT'
+      action:
+        run_playbook:
+          name: check_webhook_condition.yml

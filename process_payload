@@ -1,0 +1,9 @@
+import json
+import sys
+
+if __name__ == "__main__":
+    # Parse the payload from the command-line argument
+    payload = json.loads(sys.argv[1])
+    # Process the event data
+    print("Processing event with data:", payload)
+    # Further processing logic here

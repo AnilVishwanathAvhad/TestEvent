@@ -1,0 +1,7 @@
+# check_webhook_condition.yml
+- hosts: localhost
+  vars:
+    payload: "{{ event }}"  # The incoming webhook event data
+  tasks:
+    - name: Process event with Python script
+      command: python3 process_payload.py "{{ payload | to_json }}"
